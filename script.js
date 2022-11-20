@@ -32,21 +32,23 @@ let temp=`
                     <p class="card-text"><b>Country Code :</b> ${(country.fifa!=undefined)?country.fifa:country.cca3}</p>
                     <p class="card-text"><b>Population :</b> ${(country.population)}</p>
                     <br></div>
-                    <button class="btn btn-primary" onclick="weatherBtn(${country.latlng})">weather</button>
+                    <button class="btn btn-primary" onclick="weatherBtn([${country.latlng[0]},${country.latlng[1]}],'${country.name.common}')">weather</button>
+                    <p id="load${country.name.common}"></p>
                     </div>
                     </div><br>
-                    `;
-   
-return temp
-}
-
-
+                    `;        
+                    
+        return temp
+}        
 //to show weather message
-let weatherBtn=(lat,lon)=>{
-   //fetching weather api
-   let url=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9bf59c67c0d408cc5e1c4877f3e4d9d5`
-   fetch(url).then((res)=>res.json()).then((data)=>{
-      
+let weatherBtn=(lan,name)=>{
+    let [lat,lon]=lan
+    let l=document.getElementById(`load${name}`)
+    l.innerHTML="...Loading...please wait...";
+    //fetching weather api
+    let url=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9bf59c67c0d408cc5e1c4877f3e4d9d5`
+    fetch(url).then((res)=>res.json()).then((data)=>{
+        
         
         //weather msg template
         let weatherMsg=`
@@ -55,9 +57,10 @@ let weatherBtn=(lat,lon)=>{
         Weather  :  ${data.weather[0].description}
         Wind speed : ${data.wind.speed}
         temperature : ${data.main.temp} 
-        `
+        `;
         
         //we are going to show weather report via alert.
         alert(weatherMsg);
+        l.innerHTML="";
     })
 }
