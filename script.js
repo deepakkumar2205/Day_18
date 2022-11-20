@@ -18,6 +18,13 @@ fetch(url).then((res)=>res.json()).then((data)=>{
 })
 
 let template=(country)=>{
+    // try{
+    //    if(country.capital[0]!="") throw country.capital[0]
+    // }catch(err){
+    //     console.log('deepak');
+    // }
+
+
 let temp=`
 
         <!-- CARD -->
@@ -27,8 +34,8 @@ let temp=`
                 <div class="card-body">
                     <img class="flag1"f src="${country.flags.png}" alt="">
                     <div class=align>
-                    <p class="card-text"><b>Capital:</b>${country.capital[0]}</p>
-                    <p class="card-text"><b>Region </b>${country.region}</p>
+                    <p class="card-text"><b>Capital:</b>${country.capital}</p>
+                    <p class="card-text"><b>Region :</b>${country.region}</p>
                     <p class="card-text"><b>Country Code :</b> ${(country.fifa!=undefined)?country.fifa:country.cca3}</p>
                     <p class="card-text"><b>Population :</b> ${(country.population)}</p>
                     <br></div>
@@ -38,6 +45,7 @@ let temp=`
                     </div><br>
                     `;        
                     
+        
         return temp
 }        
 //to show weather message
