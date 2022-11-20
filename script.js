@@ -8,7 +8,8 @@ fetch(url).then((res)=>res.json()).then((data)=>{
     data.forEach(element => {
 
     let div=document.createElement("div");
-    div.className="col-sm-4 col-1g-4 alert alert-primary"
+    // div.className="col-sm-4 col-1g-4 alert alert-primary"
+    div.className="col-sm-6 col-md-4 col-lg-4 col-xl-4"
     let fileLoad=   template(element);
     div.innerHTML=fileLoad;
     row.appendChild(div)
@@ -21,16 +22,19 @@ let temp=`
 
         <!-- CARD -->
         
-            <div class="card">
+            <div class="card h-100" >
                 <div class="card-header">${country.name.common}</div>
                 <div class="card-body">
                     <img class="flag1"f src="${country.flags.png}" alt="">
+                    <div class=align>
                     <p class="card-text"><b>Capital:</b>${country.capital[0]}</p>
-                    <p class="card-text"><b>Region:</b>${country.region}</p>
+                    <p class="card-text"><b>Region </b>${country.region}</p>
                     <p class="card-text"><b>Country Code :</b> ${(country.fifa!=undefined)?country.fifa:country.cca3}</p>
+                    <p class="card-text"><b>Population :</b> ${(country.population)}</p>
+                    <br></div>
                     <button class="btn btn-primary" onclick="weatherBtn(${country.latlng})">weather</button>
                     </div>
-                    </div>
+                    </div><br>
                     `;
    
 return temp
