@@ -28,7 +28,7 @@ let temp=`
                     <p class="card-text"><b>Capital:</b>${country.capital[0]}</p>
                     <p class="card-text"><b>Region:</b>${country.region}</p>
                     <p class="card-text"><b>Country Code :</b> ${(country.fifa!=undefined)?country.fifa:country.cca3}</p>
-                    <button class="btn btn-primary" onclick="weatherBtn(${country.latlng})">weater</button>
+                    <button class="btn btn-primary" onclick="weatherBtn(${country.latlng})">weather</button>
                     </div>
                     </div>
                     `;
